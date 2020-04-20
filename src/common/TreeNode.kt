@@ -10,7 +10,7 @@ class TreeNode(val `val`: Int) {
     }
 
     override fun toString(): String {
-        return "$`val`"
+        return "$`val`${if (left == null) "" else ", $left"}${if (right == null) "" else ", $right"}"
     }
 
 }
