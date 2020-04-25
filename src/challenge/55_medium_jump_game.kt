@@ -4,8 +4,6 @@ import java.util.*
 
 fun canJump(nums: IntArray): Boolean {
 
-    var maxIndex = 0
-
     nums.firstOrNull()?.let {
 
         val visited = BooleanArray(nums.size)
@@ -17,11 +15,7 @@ fun canJump(nums: IntArray): Boolean {
         while (nodes.isNotEmpty()) {
             val currentIndex = nodes.pop()
 
-            if (currentIndex > maxIndex) {
-                maxIndex = currentIndex
-
-                if (nums.lastIndex == maxIndex) break
-            }
+            if (currentIndex == nums.lastIndex) return true
 
             for (i in 1..nums[currentIndex]) {
                 val childIndex = i + currentIndex
@@ -35,7 +29,7 @@ fun canJump(nums: IntArray): Boolean {
         }
     }
 
-    return nums.lastIndex == maxIndex
+    return false
 }
 
 fun main() {
