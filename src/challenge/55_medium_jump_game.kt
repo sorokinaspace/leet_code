@@ -3,6 +3,18 @@ package challenge
 import java.util.*
 
 fun canJump(nums: IntArray): Boolean {
+    var lastPos = nums.lastIndex
+
+    for (i in nums.lastIndex downTo 0) {
+        if (i + nums[i] >= lastPos) {
+            lastPos = i
+        }
+    }
+
+    return 0 == lastPos
+}
+
+fun canJump2(nums: IntArray): Boolean {
 
     nums.firstOrNull()?.let {
 
