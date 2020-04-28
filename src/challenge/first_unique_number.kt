@@ -3,6 +3,7 @@ package challenge
 // Similar - LRU Cache
 class FirstUnique(nums: IntArray) {
 
+    private val set = linkedSetOf<Int>()
     private val map = linkedMapOf<Int, Int>()
 
     init {
@@ -12,15 +13,17 @@ class FirstUnique(nums: IntArray) {
     }
 
     fun showFirstUnique(): Int {
-        for ((t, u) in map) {
-            if (u == 1) return t
-        }
-        return -1
+        return set.firstOrNull() ?: -1
     }
 
     fun add(value: Int) {
         val counter = map[value]?.run { this + 1 } ?: 1
         map[value] = counter
+        if (counter > 1) {
+            set.remove(value)
+        } else {
+            set.add(value)
+        }
     }
 }
 
