@@ -4,8 +4,8 @@ fun numJewelsInStones(J: String, S: String): Int {
 
     var result = 0
 
-    S.forEach {
-        if (J.contains(it)) result++
+    J.forEach { jewel ->
+        result += S.count { it == jewel }
     }
 
     return result
