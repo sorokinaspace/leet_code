@@ -15,6 +15,14 @@ object Test {
         }
     }
 
+    fun assert(a: String, b: String, condition: String? = null) {
+        if (a != b) {
+            println("❌ FAILED $a != true ${if (condition == null) "" else "for $condition"}")
+        } else {
+            println("✅ PASSED $a == true ${if (condition == null) "" else "for $condition"}")
+        }
+    }
+
     fun assert(a: Int?, b: Int?, condition: String? = null) {
         if (a != b) {
             println("❌ FAILED $a != $b ${if (condition == null) "" else "for $condition"}")
